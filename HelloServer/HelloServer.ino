@@ -4,8 +4,8 @@
 #include <ESP8266mDNS.h>
 
 #ifndef STASSID
-#define STASSID "ORANGE_3"
-#define STAPSK  "RNJPDJUT"
+#define STASSID ""
+#define STAPSK  ""
 #endif
 
 const char* ssid = STASSID;
@@ -18,13 +18,12 @@ const int red = D8;
 const int blue = D6;
 
 void handleRoot() {
-  //  digitalWrite(led, !digitalRead(led));
+	
   server.send(200, "text/plain", "hello from esp8266!");
-  //  digitalWrite(led, 0);
 }
 
 void handleNotFound() {
-  //  digitalWrite(led, 1);
+	
   String message = "File Not Found\n\n";
   message += "URI: ";
   message += server.uri();
@@ -49,14 +48,14 @@ void handleNotFound() {
     }
   }
   server.send(404, "text/plain", message);
-  //  digitalWrite(led, 0);
+  
 }
 
 void setup(void) {
   pinMode(red, OUTPUT);
   pinMode(green , OUTPUT);
   pinMode(blue, OUTPUT);
-  //  digitalWrite(led, 0);
+  
   Serial.begin(115200);
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
